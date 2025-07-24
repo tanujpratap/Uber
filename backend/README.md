@@ -63,3 +63,76 @@ Send a JSON object with the following structure:
   "email": "john.doe@example.com",
   "password": "securePassword123"
 }
+
+# User Logout API Documentation
+
+# User Profile API Documentation
+
+## Endpoint
+
+**GET** `/users/profile`
+
+---
+
+## Description
+
+This endpoint retrieves the authenticated user's profile information. The user must be authenticated to access this endpoint.
+
+---
+
+## Request
+
+- No request body required.
+- The request must include a valid authentication token (JWT) in cookies or the `Authorization` header.
+
+---
+
+## Responses
+
+| Status Code | Description                        | Example Response Body                      |
+|-------------|------------------------------------|--------------------------------------------|
+| 200         | Profile retrieved successfully     | `{ "fullname": { "firstname": "John", "lastname": "Doe" }, "email": "john.doe@example.com", ... }` |
+| 401         | Unauthorized (no/invalid token)    | `{ "message": "Unauthorized" }`            |
+| 500         | Internal server error              | `{ "message": "Internal server error" }`   |
+
+---
+
+## Notes
+
+- User must be authenticated to access this endpoint.
+- Returns the user's profile data.
+
+## Endpoint
+
+**GET** `/users/logout`
+
+---
+
+## Description
+
+This endpoint logs out the authenticated user by clearing the authentication token and blacklisting it. The user must be authenticated to access this endpoint.
+
+---
+
+## Request
+
+- No request body required.
+- The request must include a valid authentication token (JWT) in cookies or the `Authorization` header.
+
+---
+
+## Responses
+
+| Status Code | Description                   | Example Response Body                      |
+|-------------|-------------------------------|--------------------------------------------|
+| 200         | User logged out successfully  | `{ "message": "Logged Out" }`              |
+| 401         | Unauthorized (no/invalid token) | `{ "message": "Unauthorized" }`           |
+| 500         | Internal server error         | `{ "message": "Internal server error" }`   |
+
+---
+
+## Notes
+
+- The endpoint clears the authentication token from cookies.
+- The token is blacklisted to prevent further use.
+- User must be authenticated to access this endpoint.
