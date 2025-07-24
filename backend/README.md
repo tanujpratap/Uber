@@ -33,3 +33,33 @@ Send a JSON object with the following structure:
   "email": "john.doe@example.com",
   "password": "securePassword123"
 }
+
+# User Login API Documentation
+
+## Endpoint
+
+**POST** `/users/login`
+
+---
+
+## Description
+
+This endpoint authenticates an existing user. It requires the user's email and password. On successful login, it returns a JWT token and the user object.
+
+---
+
+## Request Body
+
+Send a JSON object with the following structure:
+
+| Field    | Type   | Required | Description                        |
+|----------|--------|----------|------------------------------------|
+| email    | String | Yes      | User's email (must be valid email) |
+| password | String | Yes      | Password (min 6 characters)        |
+
+**Example:**
+```json
+{
+  "email": "john.doe@example.com",
+  "password": "securePassword123"
+}
