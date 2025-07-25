@@ -136,3 +136,80 @@ This endpoint logs out the authenticated user by clearing the authentication tok
 - The endpoint clears the authentication token from cookies.
 - The token is blacklisted to prevent further use.
 - User must be authenticated to access this endpoint.
+
+
+# Captain Registration API Documentation
+
+## Endpoint
+
+**POST** `/captains/register`
+
+---
+
+## Description
+
+This endpoint registers a new captain (driver). It requires the captain's full name, email, password, and vehicle details. On successful registration, it returns a JWT token and the captain object.
+
+---
+
+## Request Body
+
+Send a JSON object with the following structure:
+
+| Field                   | Type   | Required | Description                                 |
+|-------------------------|--------|----------|---------------------------------------------|
+| fullname.firstname      | String | Yes      | Captain's first name (min 3 chars)          |
+| fullname.lastname       | String | Yes      | Captain's last name (min 3 chars)           |
+| email                   | String | Yes      | Captain's email (must be valid email)       |
+| password                | String | Yes      | Password (min 6 characters)                 |
+| vehicle.color           | String | Yes      | Vehicle color (min 3 chars)                 |
+| vehicle.plate           | String | Yes      | Vehicle plate (min 3 chars)                 |
+| vehicle.vehicleType     | String | Yes      | Vehicle type: 'car', 'auto', or 'bike'      |
+| vehicle.capacity        | Number | Yes      | Vehicle capacity (min 1)                    |
+
+**Example:**
+```json
+{
+  "fullname": {
+    "firstname": "Jane",
+    "lastname": "Smith"
+  },
+  "email": "jane.smith@example.com",
+  "password": "securePassword123",
+  "vehicle": {
+    "color": "Red",
+    "plate": "XYZ1234",
+    "vehicleType": "car",
+    "capacity": 4
+  }
+}
+
+# Captain Login API Documentation
+
+## Endpoint
+
+**POST** `/captains/login`
+
+---
+
+## Description
+
+This endpoint authenticates an existing captain (driver). It requires the captain's email and password. On successful login, it returns a JWT token and the captain object.
+
+---
+
+## Request Body
+
+Send a JSON object with the following structure:
+
+| Field    | Type   | Required | Description                        |
+|----------|--------|----------|------------------------------------|
+| email    | String | Yes      | Captain's email (must be valid)    |
+| password | String | Yes      | Password (min 6 characters)        |
+
+**Example:**
+```json
+{
+  "email": "jane.smith@example.com",
+  "password": "securePassword123"
+}
