@@ -213,3 +213,48 @@ Send a JSON object with the following structure:
   "email": "jane.smith@example.com",
   "password": "securePassword123"
 }
+
+# Captain Profile API Documentation
+
+## Endpoint
+
+**GET** `/captains/profile`
+
+---
+
+## Description
+
+This endpoint retrieves the authenticated captain's profile information including personal details and vehicle information.
+
+---
+
+## Request 
+
+### Headers Required
+```json
+{
+  "Authorization": "Bearer <token>"
+}
+
+
+# Captain Logout API Documentation
+
+## Endpoint
+
+**GET** `/captains/logout`
+
+---
+
+## Description
+
+This endpoint logs out the authenticated captain by clearing the authentication token from cookies and blacklisting it to prevent reuse.
+
+---
+
+## Request 
+
+### Headers Required
+```json
+{
+  "Authorization": "Bearer <token>"
+}
